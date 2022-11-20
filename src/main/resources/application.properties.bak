@@ -1,7 +1,0 @@
-
-spring.datasource.url=jdbc:postgresql://localhost:5432/employee_db
-spring.datasource.username=rico
-spring.datasource.password=mayo
-
-#server.port=8081
-spring.mvc.pathmatch.matching-strategy=ant-path-matcher

@@ -1,10 +1,10 @@
-package com.belajar.employee_app;
+package project.rico.darirumah;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeAppApplicationTests {
+class DarirumahApplicationTests {
 
 	@Test
 	void contextLoads() {

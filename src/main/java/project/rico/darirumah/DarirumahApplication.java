@@ -1,4 +1,4 @@
-package com.belajar.employee_app;
+package project.rico.darirumah;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
