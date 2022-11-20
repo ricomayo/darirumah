@@ -18,7 +18,7 @@ import java.util.Date;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v3")
 @Validated
 public class LoginController {
     @Autowired
@@ -26,7 +26,7 @@ public class LoginController {
 
     @Operation(summary = "Login Validation")
     @PostMapping(value = "/validateLogin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addDirectMember(@RequestHeader(value = "request-date", required = false) @DateTimeFormat(pattern = AppConstant.DATE_TIME_FORMAT) Date requestAt,
+    public ResponseEntity<?> validateLogin(@RequestHeader(value = "request-date", required = false) @DateTimeFormat(pattern = AppConstant.DATE_TIME_FORMAT) Date requestAt,
                                              @RequestBody @Valid LoginRq loginRq,
                                              HttpServletRequest servletRequest) throws CommonException {
 
