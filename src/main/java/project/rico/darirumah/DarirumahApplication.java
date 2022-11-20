@@ -3,10 +3,11 @@ package project.rico.darirumah;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
-
-@ComponentScan({"controllers"})
-@SpringBootApplication(scanBasePackages = { "project.rico.darirumah"})
+@EnableAsync
+@ComponentScan({"controller"})
+@SpringBootApplication(scanBasePackages = { "project.rico.darirumah.controller"})
 public class DarirumahApplication {
 
 	public static void main(String[] args) {

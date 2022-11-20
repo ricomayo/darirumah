@@ -18,7 +18,7 @@ import java.util.Date;
 
 
 @RestController
-@RequestMapping("/api/v3")
+@RequestMapping("/api/v1")
 @Validated
 public class LoginController {
     @Autowired
