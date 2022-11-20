@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties("app")
 public class AppProperties {
     //TODO APP Config
-    private String APP_NAME = "darirumah.service";
+    private String APP_NAME = "darirumah";
     private String APP_VERSION = "V1";
 
 

@@ -14,12 +14,12 @@ import javax.validation.constraints.NotNull;
 @Accessors(chain = true)
 public class LoginRq {
 
-    @NotNull(message = "groupId is Mandatory")
-    @JsonProperty("groupId")
+    @NotNull(message = "userName is Mandatory")
+    @JsonProperty("userName")
     private String userName;
 
-    @NotNull(message = "alias is Mandatory")
-    @JsonProperty("alias")
+    @NotNull(message = "password is Mandatory")
+    @JsonProperty("password")
     private String password;
 
 

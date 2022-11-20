@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenAPIConfig {
 
-    @Value("${spring.profiles.active:}")
+    @Value("default")
     private String activeProfiles;
 
     @Autowired
@@ -19,6 +19,8 @@ public class OpenAPIConfig {
 
     @Bean
     public OpenAPI springShopOpenAPI() {
+
+        System.out.println("MAAASSUUUKKKK111111");
         // TODO: fix configuration
         return new OpenAPI()
                 .info(new Info()

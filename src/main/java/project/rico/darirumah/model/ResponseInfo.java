@@ -93,18 +93,6 @@ public class ResponseInfo {
         this.faults.add(e.getApiFault());
     }
 
-    /**
-     * override response using exception info (use xl.lib.exception)
-     * @param exception {@link ExceptionInfo}
-     */
-    public void overrideException(ExceptionInfo exception) {
-        if (exception != null) {
-            if (HttpStatus.resolve(exception.getHttpCode()) != null) {
-                this.httpStatus = HttpStatus.valueOf(exception.getHttpCode());
-            }
-            body.overrideException(exception);
-        }
-    }
 
     /**
      * get list of exception message

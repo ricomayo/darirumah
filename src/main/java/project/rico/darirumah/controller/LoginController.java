@@ -10,7 +10,7 @@ import project.rico.darirumah.config.AppConstant;
 import project.rico.darirumah.exception.definition.CommonException;
 import project.rico.darirumah.model.ResponseInfo;
 import project.rico.darirumah.model.request.LoginRq;
-import project.rico.darirumah.usecase.LoginUsescase;
+import project.rico.darirumah.usecase.LoginUsecase;
 import io.swagger.v3.oas.annotations.Operation;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -22,16 +22,15 @@ import java.util.Date;
 @Validated
 public class LoginController {
     @Autowired
-    private LoginUsescase loginUsescase;
+    private LoginUsecase loginUsecase;
 
     @Operation(summary = "Login Validation")
     @PostMapping(value = "/validateLogin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> validateLogin(@RequestHeader(value = "request-date", required = false) @DateTimeFormat(pattern = AppConstant.DATE_TIME_FORMAT) Date requestAt,
-                                             @RequestBody @Valid LoginRq loginRq,
+    public ResponseEntity<?> validateLogin( @RequestBody @Valid LoginRq loginRq,
                                              HttpServletRequest servletRequest) throws CommonException {
 
         /* invoke use case */
-        ResponseInfo responseInfo = loginUsescase.doLogin(loginRq);
+        ResponseInfo responseInfo = loginUsecase.doLogin(loginRq);
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());
