@@ -11,11 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenAPIConfig {
 
-    @Value("default")
-    private String activeProfiles;
 
-    @Autowired
-    private AppProperties appProperties;
 
     @Bean
     public OpenAPI springShopOpenAPI() {
@@ -25,8 +21,8 @@ public class OpenAPIConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("dari-rumah")
-//                        .version(appProperties.getAPP_VERSION()+"-" + activeProfiles)
-                        .version(appProperties.getAPP_VERSION()+"- default")
+                        .version("v1")
+//                        .version(appProperties.getAPP_VERSION()+"- default")
                 )
                 .externalDocs(new ExternalDocumentation()
                         .description("Service Documentation")

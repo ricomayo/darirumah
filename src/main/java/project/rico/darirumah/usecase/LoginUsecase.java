@@ -18,6 +18,7 @@ public class LoginUsecase extends BaseUsecase {
         GenericRs body = new GenericRs();
         ResponseInfo responseInfo = new ResponseInfo().setBody(body);
 
+
         responseInfo.setSuccess();
         return responseInfo;
     }
