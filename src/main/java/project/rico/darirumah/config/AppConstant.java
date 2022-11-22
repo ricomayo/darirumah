@@ -18,5 +18,10 @@ public class AppConstant {
     public static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     public static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";
 
+    public enum LOGIN_VALIDATION {
+        ACCEPTED,
+        REJECTED
+    }
+
 
 }

@@ -47,7 +47,16 @@ public class CommonException extends Exception {
         this.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+    public CommonException(String exceptionEnum) {
+//        super(String.format("ErrorConfig -> %s", exceptionEnum));
 
+            this.code = "01";
+            this.status = CompletionStatus.BUSINESS_ERROR;
+            this.type = "BadRequest";
+            this.httpStatus = HttpStatus.BAD_REQUEST;
+            this.displayMessage = exceptionEnum;
+
+    }
 
 
     public CommonException(HttpStatus status, String code, String type, String message) {

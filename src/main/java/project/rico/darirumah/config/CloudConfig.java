@@ -10,10 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
-/**
- * @author IDCB.RIEFKA RICO [idcb.riefkar@xl.co.id]
- * Created At 21/11/2022 17:34
- */
 @Configuration
 public class CloudConfig {
     @Autowired

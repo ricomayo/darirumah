@@ -1,4 +1,4 @@
-package project.rico.darirumah.model.request;
+package project.rico.darirumah.model.login;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

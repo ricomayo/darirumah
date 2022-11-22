@@ -18,7 +18,7 @@ public class AppProperties {
     private String APP_NAME = "darirumah";
     private String APP_VERSION = "V1";
 
-
+    public static String SCHEMA = "darirumah";
 
 
 }
