@@ -35,13 +35,13 @@ public class UserService {
         return userRepository.updatePassword(idUser, updateUserRq.getOldPassword(), updateUserRq.getNewPassword());
     }
 
-    public boolean getAccessLevel (int idUser){
+    public boolean getAccessLevel(int idUser) {
 
         int access = userRepository.getAccessLevel(idUser);
 
-        if (access > 0){
+        if (access > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

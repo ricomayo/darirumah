@@ -26,7 +26,7 @@ public class LoginService {
     private UserRepository userRepository;
 
     public List<UserRef> getLoginInfo(String userName) {
-         return userRepository.getLogin(userName);
+        return userRepository.getLogin(userName);
     }
 
 

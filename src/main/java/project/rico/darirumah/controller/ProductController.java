@@ -23,13 +23,13 @@ public class ProductController {
 
     @Operation(summary = "Get List Product")
     @GetMapping(value = "/getListProduct/{productcode}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getListProduct( @RequestHeader(value = "iduser", required = false) int idUser,
-                                             @PathVariable(value = "productcode") String productCode,
-                                             @RequestParam(value = "productname", required = false) String productName,
-                                             @RequestParam(value = "type", required = false) String type,
-                                             @RequestBody @Valid ModifyProductRq modifyProductRq) throws CommonException {
+    public ResponseEntity<?> getListProduct(@RequestHeader(value = "iduser", required = false) int idUser,
+                                            @PathVariable(value = "productcode") String productCode,
+                                            @RequestParam(value = "productname", required = false) String productName,
+                                            @RequestParam(value = "type", required = false) String type,
+                                            @RequestBody @Valid ModifyProductRq modifyProductRq) throws CommonException {
         /* invoke use case */
-        ResponseInfo responseInfo = productUsecase.getProduct(productCode,productName,type,idUser);
+        ResponseInfo responseInfo = productUsecase.getProduct(productCode, productName, type, idUser);
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());
@@ -37,10 +37,10 @@ public class ProductController {
 
     @Operation(summary = "Add New Product")
     @PostMapping(value = "/addProduct/{iduser}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addProduct (@PathVariable(value = "iduser") int idUser,
-                                         @RequestBody @Valid ModifyProductRq modifyProductRq) throws CommonException {
+    public ResponseEntity<?> addProduct(@PathVariable(value = "iduser") int idUser,
+                                        @RequestBody @Valid ModifyProductRq modifyProductRq) throws CommonException {
         /* invoke use case */
-        ResponseInfo responseInfo = productUsecase.addNewProduct(idUser,modifyProductRq);
+        ResponseInfo responseInfo = productUsecase.addNewProduct(idUser, modifyProductRq);
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());
@@ -52,7 +52,7 @@ public class ProductController {
                                            @PathVariable(value = "productcode") String productCode,
                                            @RequestBody ModifyProductRq modifyProductRq) throws CommonException {
         /* invoke use case */
-        ResponseInfo responseInfo = productUsecase.updateProduct(idUser,productCode, modifyProductRq);
+        ResponseInfo responseInfo = productUsecase.updateProduct(idUser, productCode, modifyProductRq);
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());
@@ -64,7 +64,7 @@ public class ProductController {
                                            @PathVariable(value = "productcode") String productCode,
                                            @RequestBody ModifyProductRq modifyProductRq) throws CommonException {
         /* invoke use case */
-        ResponseInfo responseInfo = productUsecase.deleteProduct(idUser,productCode);
+        ResponseInfo responseInfo = productUsecase.deleteProduct(idUser, productCode);
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());

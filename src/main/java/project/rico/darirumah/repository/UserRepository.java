@@ -100,7 +100,7 @@ public class UserRepository {
         return dbpostgre.queryForObject(sql, myObj, String.class);
     }
 
-    public int getAccessLevel (int idUser){
+    public int getAccessLevel(int idUser) {
         List<Object> parameter = new ArrayList<>();
         StringBuilder sql = QueryTools.buildQuery(" SELECT access FROM ", table_user);
         sql.append(" WHERE id_user = ? ");
