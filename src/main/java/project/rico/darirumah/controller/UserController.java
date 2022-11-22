@@ -24,7 +24,7 @@ public class UserController {
 
     @Operation(summary = "Create User")
     @PostMapping(value = "/createUser", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createUser(    @RequestBody @Valid CreateUserRq createUserRq) throws CommonException {
+    public ResponseEntity<?> createUser(@RequestBody @Valid CreateUserRq createUserRq) throws CommonException {
         /* invoke use case */
         ResponseInfo responseInfo = userUsecase.createUser(createUserRq);
         return new ResponseEntity<>(responseInfo.getBody(),
@@ -34,8 +34,8 @@ public class UserController {
 
     @Operation(summary = "Update User")
     @PutMapping(value = "/updateUser/{iduser}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updateUser(    @PathVariable(value = "iduser") String idUser,
-                                            @RequestBody UpdateUserRq updateUserRq ) throws CommonException {
+    public ResponseEntity<?> updateUser(@PathVariable(value = "iduser") String idUser,
+                                        @RequestBody UpdateUserRq updateUserRq) throws CommonException {
         /* invoke use case */
         ResponseInfo responseInfo = userUsecase.updateUser(idUser, updateUserRq);
         return new ResponseEntity<>(responseInfo.getBody(),

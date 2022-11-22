@@ -10,6 +10,7 @@ import project.rico.darirumah.model.ResponseInfo;
 import project.rico.darirumah.model.request.LoginRq;
 import project.rico.darirumah.usecase.LoginUsecase;
 import io.swagger.v3.oas.annotations.Operation;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -23,7 +24,7 @@ public class LoginController {
 
     @Operation(summary = "Login Validation")
     @PostMapping(value = "/validateLogin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> validateLogin( @RequestBody @Valid LoginRq loginRq ) throws CommonException {
+    public ResponseEntity<?> validateLogin(@RequestBody @Valid LoginRq loginRq) throws CommonException {
 
         /* invoke use case */
         ResponseInfo responseInfo = loginUsecase.doLogin(loginRq);

@@ -29,13 +29,13 @@ public class UserRepository {
     @Qualifier(AppConstant.BEAN_APP_CONFIG)
     private AppProperties appProperties;
 
-String table_name = "mst_user";
+    String table_name = "mst_user";
 
     private final String QUERY_SELECT = "SELECT id_user,username,name, password, address,handphone,access FROM ";
 
-    public List<UserRef> getLogin(String username){
+    public List<UserRef> getLogin(String username) {
         List<Object> parameter = new ArrayList<>();
-        StringBuilder sql = QueryTools.buildQuery(QUERY_SELECT,table_name);
+        StringBuilder sql = QueryTools.buildQuery(QUERY_SELECT, table_name);
 
         sql.append(" WHERE 1=1");
         sql.append(" AND username = ? ");
@@ -47,9 +47,9 @@ String table_name = "mst_user";
         return dbpostgre.query(sql.toString(), myObj, new UserRefMapper());
     }
 
-    public String insertUser(String username, String name,String password, String address, String handphone){
+    public String insertUser(String username, String name, String password, String address, String handphone) {
         List<Object> parameter = new ArrayList<>();
-        String sql = "select * from "+AppProperties.SCHEMA+".f_insertuser(?,?,?,?,? )";
+        String sql = "select * from " + AppProperties.SCHEMA + ".f_insertuser(?,?,?,?,? )";
 
         parameter.add(username);
         parameter.add(name);
@@ -58,48 +58,48 @@ String table_name = "mst_user";
         parameter.add(handphone);
 
         Object[] myObj = parameter.toArray();
-        return dbpostgre.queryForObject(sql,myObj, String.class);
+        return dbpostgre.queryForObject(sql, myObj, String.class);
     }
 
-    public int updateData( int idUser, String password, String name, String address, String handphone){
-        StringBuilder sql = QueryTools.buildQuery("UPDATE ",table_name);
+    public int updateData(int idUser, String password, String name, String address, String handphone) {
+        StringBuilder sql = QueryTools.buildQuery("UPDATE ", table_name);
 
         sql.append(" set ");
-        if(!StringTools.isEmptyOrNull(name)){
-            sql.append(" name = '"+name+"' ");
-            if(!StringTools.isEmptyOrNull(address) || !StringTools.isEmptyOrNull(handphone) ){
+        if (!StringTools.isEmptyOrNull(name)) {
+            sql.append(" name = '" + name + "' ");
+            if (!StringTools.isEmptyOrNull(address) || !StringTools.isEmptyOrNull(handphone)) {
                 sql.append(",");
             }
         }
 
-        if(!StringTools.isEmptyOrNull(address)){
-            sql.append(" address = '"+address+"' ");
-            if(!StringTools.isEmptyOrNull(handphone)){
+        if (!StringTools.isEmptyOrNull(address)) {
+            sql.append(" address = '" + address + "' ");
+            if (!StringTools.isEmptyOrNull(handphone)) {
                 sql.append(",");
             }
         }
 
-        if(!StringTools.isEmptyOrNull(handphone)){
-            sql.append(" handphone = '"+handphone+"' ");
+        if (!StringTools.isEmptyOrNull(handphone)) {
+            sql.append(" handphone = '" + handphone + "' ");
         }
 
         sql.append(" where id_user = ? ");
         sql.append(" and password = ? ");
-        System.out.println("QUERY DATA ="+sql);
-        return dbpostgre.update(sql.toString(),idUser,password);
+        System.out.println("QUERY DATA =" + sql);
+        return dbpostgre.update(sql.toString(), idUser, password);
     }
 
-    public String updatePassword( String idUser, String oldPassword, String newPassword ){
+    public String updatePassword(String idUser, String oldPassword, String newPassword) {
         List<Object> parameter = new ArrayList<>();
-        String sql = "select * from "+AppProperties.SCHEMA+".f_updatepassword(?,?,? )";
+        String sql = "select * from " + AppProperties.SCHEMA + ".f_updatepassword(?,?,? )";
 
         parameter.add(idUser);
         parameter.add(oldPassword);
         parameter.add(newPassword);
 
         Object[] myObj = parameter.toArray();
-        System.out.println("QUERY PASS = "+sql);
-        return dbpostgre.queryForObject(sql,myObj, String.class);
+        System.out.println("QUERY PASS = " + sql);
+        return dbpostgre.queryForObject(sql, myObj, String.class);
     }
 
 }

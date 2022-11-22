@@ -11,7 +11,7 @@ public class QueryTools {
     public static StringBuilder buildQuery(String query, String table) {
         StringBuilder sb = new StringBuilder(query);
 
-        return sb.append(" "+AppProperties.SCHEMA+"."+table+" ");
+        return sb.append(" " + AppProperties.SCHEMA + "." + table + " ");
 
     }
 

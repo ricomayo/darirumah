@@ -21,14 +21,11 @@ public class UpdateUserRq {
     @JsonProperty("newPassword")
     private String newPassword;
 
-
     @JsonProperty("name")
     private String name;
 
-
     @JsonProperty("address")
     private String address;
-
 
     @JsonProperty("handphone")
     private String handphone;

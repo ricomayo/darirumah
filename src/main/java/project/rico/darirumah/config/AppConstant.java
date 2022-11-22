@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 public class AppConstant {
     public static final String APP_NAME = "darirumah";
-    public static final String BEAN_APP_CONFIG= "app-config";
+    public static final String BEAN_APP_CONFIG = "app-config";
 
     public static final String BEAN_DS_MASTERDATA_POSTGRES = "ds-masterdata-postgres";
     public static final String BEAN_DS_CONFIG_POSTGRES = "ds-configuration-postgres";
@@ -23,12 +23,12 @@ public class AppConstant {
         REJECTED
     }
 
-    public enum UPDATE_USER{
+    public enum UPDATE_USER {
         PASSWORD,
         DATA
     }
 
-    public enum UPDATE_PASSWORD{
+    public enum UPDATE_PASSWORD {
         SUCCESS,
         NOT_FOUND,
         NOT_MATCH

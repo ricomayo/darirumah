@@ -41,13 +41,13 @@ public class UserUsecase extends BaseUsecase {
         try {
             if (!StringTools.isEmptyOrNull(updateUserRq.getName()) ||
                     !StringTools.isEmptyOrNull(updateUserRq.getAddress()) ||
-                    !StringTools.isEmptyOrNull(updateUserRq.getHandphone()) ) {
+                    !StringTools.isEmptyOrNull(updateUserRq.getHandphone())) {
                 System.out.println("masuk data");
                 int intIdUser = Integer.valueOf(idUser);
                 int i = userService.updateData(intIdUser, updateUserRq);
                 if (i > 0) {
                     respons.append(" Data ");
-                }else{
+                } else {
                     throw new CommonException("User Not Found");
                 }
             }
@@ -55,11 +55,11 @@ public class UserUsecase extends BaseUsecase {
             if (updateUserRq.getOldPassword() != null && updateUserRq.getNewPassword() != null) {
                 System.out.println("masuk pass");
                 String result = userService.updatePassword(idUser, updateUserRq);
-                if (result.equals(AppConstant.UPDATE_PASSWORD.NOT_FOUND.toString())){
+                if (result.equals(AppConstant.UPDATE_PASSWORD.NOT_FOUND.toString())) {
                     throw new CommonException("User Not Found");
-                }else if(result.equals(AppConstant.UPDATE_PASSWORD.NOT_MATCH.toString())){
+                } else if (result.equals(AppConstant.UPDATE_PASSWORD.NOT_MATCH.toString())) {
                     throw new CommonException("Password Not Match");
-                }else{
+                } else {
                     respons.append(" Password ");
                 }
             }

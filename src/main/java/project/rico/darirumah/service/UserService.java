@@ -20,17 +20,17 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public String createUser (CreateUserRq createUserRq){
+    public String createUser(CreateUserRq createUserRq) {
 
-        return userRepository.insertUser(createUserRq.getUserName(), createUserRq.getName(),createUserRq.getPassword(),createUserRq.getAddress(),createUserRq.getHandphone());
+        return userRepository.insertUser(createUserRq.getUserName(), createUserRq.getName(), createUserRq.getPassword(), createUserRq.getAddress(), createUserRq.getHandphone());
     }
 
-    public int updateData (int iduser, UpdateUserRq updateUserRq){
+    public int updateData(int iduser, UpdateUserRq updateUserRq) {
 
-        return userRepository.updateData(iduser,  updateUserRq.getOldPassword(), updateUserRq.getName(),updateUserRq.getAddress(),updateUserRq.getHandphone());
+        return userRepository.updateData(iduser, updateUserRq.getOldPassword(), updateUserRq.getName(), updateUserRq.getAddress(), updateUserRq.getHandphone());
     }
 
-    public String updatePassword (String idUser, UpdateUserRq updateUserRq){
+    public String updatePassword(String idUser, UpdateUserRq updateUserRq) {
 
         return userRepository.updatePassword(idUser, updateUserRq.getOldPassword(), updateUserRq.getNewPassword());
     }
