@@ -1,19 +1,18 @@
-package project.rico.darirumah.model.login;
+package project.rico.darirumah.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import javax.validation.constraints.NotNull;
 
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class LoginRq {
-
+public class CreateUserRq {
     @NotNull(message = "userName is Mandatory")
     @JsonProperty("userName")
     private String userName;
@@ -22,5 +21,8 @@ public class LoginRq {
     @JsonProperty("password")
     private String password;
 
+    private String name;
+    private String address;
+    private String handphone;
 
 }

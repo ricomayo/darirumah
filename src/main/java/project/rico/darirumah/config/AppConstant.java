@@ -23,5 +23,16 @@ public class AppConstant {
         REJECTED
     }
 
+    public enum UPDATE_USER{
+        PASSWORD,
+        DATA
+    }
+
+    public enum UPDATE_PASSWORD{
+        SUCCESS,
+        NOT_FOUND,
+        NOT_MATCH
+    }
+
 
 }

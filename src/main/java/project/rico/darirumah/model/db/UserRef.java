@@ -15,6 +15,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class UserRef {
 
+    String iduser;
     String username;
     @JsonIgnore
     String password;

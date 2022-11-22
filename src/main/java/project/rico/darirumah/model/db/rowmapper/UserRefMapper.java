@@ -11,6 +11,7 @@ public class UserRefMapper implements RowMapper<UserRef> {
     @Override
     public UserRef mapRow(ResultSet rs, int rowNum) throws SQLException {
         UserRef data = new UserRef();
+        data.setIduser(rs.getString("id_user"));
         data.setUsername(rs.getString("username"));
         data.setName(rs.getString("name"));
         data.setPassword(rs.getString("password"));
