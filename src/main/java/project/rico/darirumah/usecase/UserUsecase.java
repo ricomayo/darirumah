@@ -33,7 +33,7 @@ public class UserUsecase extends BaseUsecase {
         return responseInfo;
     }
 
-    public ResponseInfo updateUser(String idUser, UpdateUserRq updateUserRq) {
+    public ResponseInfo updateUser(int idUser, UpdateUserRq updateUserRq) {
         GenericRs body = new GenericRs();
         ResponseInfo responseInfo = new ResponseInfo().setBody(body);
         StringBuilder respons = new StringBuilder("Update");
@@ -43,8 +43,8 @@ public class UserUsecase extends BaseUsecase {
                     !StringTools.isEmptyOrNull(updateUserRq.getAddress()) ||
                     !StringTools.isEmptyOrNull(updateUserRq.getHandphone())) {
                 System.out.println("masuk data");
-                int intIdUser = Integer.valueOf(idUser);
-                int i = userService.updateData(intIdUser, updateUserRq);
+
+                int i = userService.updateData(idUser, updateUserRq);
                 if (i > 0) {
                     respons.append(" Data ");
                 } else {

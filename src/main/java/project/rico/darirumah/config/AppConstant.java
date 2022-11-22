@@ -34,5 +34,11 @@ public class AppConstant {
         NOT_MATCH
     }
 
+    public enum MODIFY_PRODUCT {
+        SUCCESS,
+        PRODUCT_EXIST
+    }
+
+
 
 }

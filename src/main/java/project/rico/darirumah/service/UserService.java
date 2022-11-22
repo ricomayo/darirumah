@@ -30,8 +30,20 @@ public class UserService {
         return userRepository.updateData(iduser, updateUserRq.getOldPassword(), updateUserRq.getName(), updateUserRq.getAddress(), updateUserRq.getHandphone());
     }
 
-    public String updatePassword(String idUser, UpdateUserRq updateUserRq) {
+    public String updatePassword(int idUser, UpdateUserRq updateUserRq) {
 
         return userRepository.updatePassword(idUser, updateUserRq.getOldPassword(), updateUserRq.getNewPassword());
     }
+
+    public boolean getAccessLevel (int idUser){
+
+        int access = userRepository.getAccessLevel(idUser);
+
+        if (access > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

@@ -15,11 +15,9 @@ import project.rico.darirumah.util.StringTools;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Slf4j
 @Repository
 public class UserRepository {
-
 
     @Autowired
     @Qualifier(AppConstant.BEAN_JDBC_MASTERDATA_POSTGRES)
@@ -29,13 +27,13 @@ public class UserRepository {
     @Qualifier(AppConstant.BEAN_APP_CONFIG)
     private AppProperties appProperties;
 
-    String table_name = "mst_user";
+    String table_user = "mst_user";
 
     private final String QUERY_SELECT = "SELECT id_user,username,name, password, address,handphone,access FROM ";
 
     public List<UserRef> getLogin(String username) {
         List<Object> parameter = new ArrayList<>();
-        StringBuilder sql = QueryTools.buildQuery(QUERY_SELECT, table_name);
+        StringBuilder sql = QueryTools.buildQuery(QUERY_SELECT, table_user);
 
         sql.append(" WHERE 1=1");
         sql.append(" AND username = ? ");
@@ -62,7 +60,7 @@ public class UserRepository {
     }
 
     public int updateData(int idUser, String password, String name, String address, String handphone) {
-        StringBuilder sql = QueryTools.buildQuery("UPDATE ", table_name);
+        StringBuilder sql = QueryTools.buildQuery("UPDATE ", table_user);
 
         sql.append(" set ");
         if (!StringTools.isEmptyOrNull(name)) {
@@ -89,7 +87,7 @@ public class UserRepository {
         return dbpostgre.update(sql.toString(), idUser, password);
     }
 
-    public String updatePassword(String idUser, String oldPassword, String newPassword) {
+    public String updatePassword(int idUser, String oldPassword, String newPassword) {
         List<Object> parameter = new ArrayList<>();
         String sql = "select * from " + AppProperties.SCHEMA + ".f_updatepassword(?,?,? )";
 
@@ -100,6 +98,17 @@ public class UserRepository {
         Object[] myObj = parameter.toArray();
         System.out.println("QUERY PASS = " + sql);
         return dbpostgre.queryForObject(sql, myObj, String.class);
+    }
+
+    public int getAccessLevel (int idUser){
+        List<Object> parameter = new ArrayList<>();
+        StringBuilder sql = QueryTools.buildQuery(" SELECT access FROM ", table_user);
+        sql.append(" WHERE id_user = ? ");
+        parameter.add(idUser);
+
+        Object[] myObj = parameter.toArray();
+        String response = dbpostgre.queryForObject(sql.toString(), myObj, String.class);
+        return Integer.valueOf(response);
     }
 
 }

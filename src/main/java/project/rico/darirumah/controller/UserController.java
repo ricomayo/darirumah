@@ -34,7 +34,7 @@ public class UserController {
 
     @Operation(summary = "Update User")
     @PutMapping(value = "/updateUser/{iduser}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updateUser(@PathVariable(value = "iduser") String idUser,
+    public ResponseEntity<?> updateUser(@PathVariable(value = "iduser") int idUser,
                                         @RequestBody UpdateUserRq updateUserRq) throws CommonException {
         /* invoke use case */
         ResponseInfo responseInfo = userUsecase.updateUser(idUser, updateUserRq);
