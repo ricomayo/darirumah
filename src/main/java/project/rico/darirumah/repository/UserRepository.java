@@ -9,7 +9,6 @@ import project.rico.darirumah.config.AppConstant;
 import project.rico.darirumah.config.AppProperties;
 import project.rico.darirumah.model.db.UserRef;
 import project.rico.darirumah.model.db.rowmapper.UserRefMapper;
-import project.rico.darirumah.model.login.LoginRs;
 import project.rico.darirumah.util.QueryTools;
 
 import java.util.ArrayList;
