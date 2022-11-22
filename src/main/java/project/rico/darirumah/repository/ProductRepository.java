@@ -51,7 +51,7 @@ public class ProductRepository {
 
     public String insertProduct(int idUser, String productCode, String productName, String uom, String type) {
         List<Object> parameter = new ArrayList<>();
-        String sql = "select * from " + AppProperties.SCHEMA + ".f_insertproduct(?,?,?,?,? )";
+        String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_insertproduct(?,?,?,?,? )";
 
         parameter.add(String.valueOf(idUser));
         parameter.add(productCode);
@@ -89,9 +89,11 @@ public class ProductRepository {
             StringBuilder add = QueryTools.buildQuery(" , updated_by = (SELECT username FROM ", TABLE_USER);
             sql.append(add);
             sql.append(" WHERE id_user =? ) ");
+
+            sql.append(" , updated_date = now() ");
         }
 
-        sql.append(" where productcode = ? ");
+        sql.append(" WHERE productcode = ? ");
         StringBuilder add = QueryTools.buildQuery(" AND supplier = (SELECT name FROM ", TABLE_USER);
         sql.append(add);
         sql.append(" WHERE id_user =? ) ");

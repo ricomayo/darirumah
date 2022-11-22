@@ -47,7 +47,7 @@ public class UserRepository {
 
     public String insertUser(String username, String name, String password, String address, String handphone) {
         List<Object> parameter = new ArrayList<>();
-        String sql = "select * from " + AppProperties.SCHEMA + ".f_insertuser(?,?,?,?,? )";
+        String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_insertuser(?,?,?,?,? )";
 
         parameter.add(username);
         parameter.add(name);
@@ -81,15 +81,15 @@ public class UserRepository {
             sql.append(" handphone = '" + handphone + "' ");
         }
 
-        sql.append(" where id_user = ? ");
-        sql.append(" and password = ? ");
+        sql.append(" WHERE id_user = ? ");
+        sql.append(" AND password = ? ");
         System.out.println("QUERY DATA =" + sql);
         return dbpostgre.update(sql.toString(), idUser, password);
     }
 
     public String updatePassword(int idUser, String oldPassword, String newPassword) {
         List<Object> parameter = new ArrayList<>();
-        String sql = "select * from " + AppProperties.SCHEMA + ".f_updatepassword(?,?,? )";
+        String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_updatepassword(?,?,? )";
 
         parameter.add(idUser);
         parameter.add(oldPassword);

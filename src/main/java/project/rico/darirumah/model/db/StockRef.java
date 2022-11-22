@@ -1,7 +1,5 @@
 package project.rico.darirumah.model.db;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -17,6 +15,7 @@ public class StockRef {
     String idStock;
     String idProduct;
     String productCode;
-    String qty;
+    String qtyFree;
+    String qtyBook;
     String uom;
 }
