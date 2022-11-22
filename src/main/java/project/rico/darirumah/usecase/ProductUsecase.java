@@ -14,6 +14,7 @@ import project.rico.darirumah.service.ProductService;
 import project.rico.darirumah.service.UserService;
 import project.rico.darirumah.util.StringTools;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -31,7 +32,7 @@ public class ProductUsecase extends BaseUsecase {
         String response = "";
 
         try {
-            if (userService.getAccessLevel(idUser)) {
+            if (userService.getAccess(idUser)) {
                 response = productService.addProduct(idUser, modifyProductRq);
                 if (StringTools.equals(response, AppConstant.MODIFY_PRODUCT.PRODUCT_EXIST.toString())) {
                     throw new CommonException("This Product Already Exist");
@@ -51,7 +52,7 @@ public class ProductUsecase extends BaseUsecase {
         ResponseInfo responseInfo = new ResponseInfo().setBody(body);
         StringBuilder response = new StringBuilder();
         try {
-            if (userService.getAccessLevel(idUser)) {
+            if (userService.getAccess(idUser)) {
                 if (!StringTools.isEmptyOrNull(modifyProductRq.getProductName()) ||
                         !StringTools.isEmptyOrNull(modifyProductRq.getType()) ||
                         !StringTools.isEmptyOrNull(modifyProductRq.getUom())) {
@@ -82,10 +83,10 @@ public class ProductUsecase extends BaseUsecase {
         String response = "";
 
         try {
-            if (userService.getAccessLevel(idUser)) {
+            if (userService.getAccess(idUser)) {
                 int i = productService.deleteProduct(idUser, productCode);
                 if (i > 0) {
-                    response = "Data has been Updated.";
+                    response = "Data has been Deleted.";
                 } else {
                     throw new CommonException("Product Not Found");
                 }
@@ -103,17 +104,14 @@ public class ProductUsecase extends BaseUsecase {
         GenericRs body = new GenericRs();
         ResponseInfo responseInfo = new ResponseInfo().setBody(body);
         String response = "";
-        boolean supplierFlag = false;
 
         try {
-
-            if (userService.getAccessLevel(idUser)) {
-                supplierFlag = true;
+            List<ProductRef> listProduct = new ArrayList<>();
+            if(userService.getAccess(idUser)) {
+                listProduct = productService.getListProduct(productCode, productName, type);
             }
-            List<ProductRef> listProduct = productService.getListProduct(productCode, productName, type, supplierFlag, idUser);
-
             if (listProduct != null && listProduct.size() > 0) {
-                responseInfo.setSuccess(response);
+                responseInfo.setSuccess(listProduct);
             } else {
                 throw new CommonException("No Product Found.");
             }

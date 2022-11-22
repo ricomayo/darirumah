@@ -22,8 +22,8 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductRef> getListProduct(String productCode, String productName, String type, boolean supplierFLag, int idUser) {
-        return productRepository.getProduct(productCode, productName, type, supplierFLag, idUser);
+    public List<ProductRef> getListProduct(String productCode, String productName, String type) {
+        return productRepository.getProduct(productCode, productName, type);
     }
 
     public String addProduct(int idUser, ModifyProductRq modifyProductRq) {

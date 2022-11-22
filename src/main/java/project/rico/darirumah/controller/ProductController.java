@@ -22,12 +22,11 @@ public class ProductController {
     ProductUsecase productUsecase;
 
     @Operation(summary = "Get List Product")
-    @GetMapping(value = "/getListProduct/{productcode}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getListProduct/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getListProduct(@RequestHeader(value = "iduser", required = false) int idUser,
-                                            @PathVariable(value = "productcode") String productCode,
+                                            @RequestParam(value = "productcode", required = false) String productCode,
                                             @RequestParam(value = "productname", required = false) String productName,
-                                            @RequestParam(value = "type", required = false) String type,
-                                            @RequestBody @Valid ModifyProductRq modifyProductRq) throws CommonException {
+                                            @RequestParam(value = "type", required = false) String type) throws CommonException {
         /* invoke use case */
         ResponseInfo responseInfo = productUsecase.getProduct(productCode, productName, type, idUser);
         return new ResponseEntity<>(responseInfo.getBody(),
@@ -61,8 +60,7 @@ public class ProductController {
     @Operation(summary = "Delete Product")
     @DeleteMapping(value = "/deleteProduct/{iduser}/{productcode}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteProduct(@PathVariable(value = "iduser") int idUser,
-                                           @PathVariable(value = "productcode") String productCode,
-                                           @RequestBody ModifyProductRq modifyProductRq) throws CommonException {
+                                           @PathVariable(value = "productcode") String productCode) throws CommonException {
         /* invoke use case */
         ResponseInfo responseInfo = productUsecase.deleteProduct(idUser, productCode);
         return new ResponseEntity<>(responseInfo.getBody(),

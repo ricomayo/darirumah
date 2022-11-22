@@ -1,5 +1,6 @@
 package project.rico.darirumah.repository;
 
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Repository;
 import project.rico.darirumah.config.AppConstant;
 import project.rico.darirumah.config.AppProperties;
 import project.rico.darirumah.model.db.ProductRef;
+import project.rico.darirumah.model.db.StockRef;
 import project.rico.darirumah.model.db.rowmapper.ProductRefMapper;
+import project.rico.darirumah.model.db.rowmapper.StockRefMapper;
 import project.rico.darirumah.util.QueryTools;
 import project.rico.darirumah.util.StringTools;
 
@@ -17,7 +20,7 @@ import java.util.List;
 
 @Slf4j
 @Repository
-public class ProductRepository {
+public class StockRepository {
     @Autowired
     @Qualifier(AppConstant.BEAN_JDBC_MASTERDATA_POSTGRES)
     private JdbcTemplate dbpostgre;
@@ -27,11 +30,10 @@ public class ProductRepository {
     private AppProperties appProperties;
 
     String TABLE_PRODUCT = "mst_product";
-    String TABLE_USER = "mst_user";
 
-    private final String QUERY_SELECT = "SELECT id_product,productcode, productname, supplier, uom, type  FROM ";
+    private final String QUERY_SELECT = "SELECT id_stock,id_product,productcode, qty, uom  FROM ";
 
-    public List<ProductRef> getProduct(String productCode, String productName, String type) {
+    public List<StockRef> getStock(String productCode, String productName, String type) {
 
         StringBuilder sql = QueryTools.buildQuery(QUERY_SELECT, TABLE_PRODUCT);
 
@@ -46,23 +48,22 @@ public class ProductRepository {
             sql.append(" AND type = '" + type + "' ");
         }
 
-        return dbpostgre.query(sql.toString(), new ProductRefMapper());
+
+        return dbpostgre.query(sql.toString(), new StockRefMapper());
     }
 
-    public String insertProduct(int idUser, String productCode, String productName, String uom, String type) {
+    public String insertStock(int idUser, String productCode, String qty) {
         List<Object> parameter = new ArrayList<>();
-        String sql = "select * from " + AppProperties.SCHEMA + ".f_insertproduct(?,?,?,?,? )";
+        String sql = "select * from " + AppProperties.SCHEMA + ".f_insertproduct(?,?,?)";
 
-        parameter.add(String.valueOf(idUser));
+        parameter.add(idUser);
         parameter.add(productCode);
-        parameter.add(productName);
-        parameter.add(uom);
-        parameter.add(type);
+        parameter.add(qty);
 
         Object[] myObj = parameter.toArray();
         return dbpostgre.queryForObject(sql, myObj, String.class);
     }
-
+/*
     public int updateProduct(int idUser, String productCode, String productName, String uom, String type) {
         StringBuilder sql = QueryTools.buildQuery("UPDATE ", TABLE_PRODUCT);
 
@@ -86,7 +87,7 @@ public class ProductRepository {
         }
 
         if (!StringTools.isEmptyOrNull(productName) || !StringTools.isEmptyOrNull(uom) || !StringTools.isEmptyOrNull(type)) {
-            StringBuilder add = QueryTools.buildQuery(" , updated_by = (SELECT username FROM ", TABLE_USER);
+            StringBuilder add = QueryTools.buildQuery(" updated_by = (SELECT username FROM ", TABLE_USER);
             sql.append(add);
             sql.append(" WHERE id_user =? ) ");
         }
@@ -96,6 +97,7 @@ public class ProductRepository {
         sql.append(add);
         sql.append(" WHERE id_user =? ) ");
 
+        System.out.println("QUERY DATA =" + sql);
         return dbpostgre.update(sql.toString(), idUser, productCode, idUser);
     }
 
@@ -109,4 +111,5 @@ public class ProductRepository {
 
         return dbpostgre.update(sql.toString(), productCode, idUser);
     }
+*/
 }
