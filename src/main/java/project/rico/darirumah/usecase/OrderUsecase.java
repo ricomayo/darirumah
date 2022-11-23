@@ -22,16 +22,17 @@ public class OrderUsecase extends BaseUsecase{
 
        GenericRs body = new GenericRs();
        ResponseInfo responseInfo = new ResponseInfo().setBody(body);
-       String response = "";
 
        try {
-            response = orderService.placeOrder(orderRq);
+            String result = orderService.placeOrder(orderRq);
 
-            if(!StringTools.equals(response, AppConstant.ORDER_PRODUCT.SUCCESS.toString())){
-                throw new CommonException(response);
+            if(!StringTools.equals(result, AppConstant.ORDER_PRODUCT.SUCCESS.toString())){
+                throw new CommonException(result);
             }
 
-           responseInfo.setSuccess(response);
+            String redisKey  = orderService.getRedisKey(orderRq.getIdUser(),Integer.parseInt(result), orderRq.getProductCode());
+
+           responseInfo.setSuccess("SUCCESS with key= "+redisKey);
        } catch (Exception e) {
            responseInfo.setException(e);
        }

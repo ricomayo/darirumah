@@ -26,4 +26,12 @@ public class AppProperties {
     private int ASYNC_MAX_POOL_SIZE = 50;
     private int ASYNC_QUEUE_CAPACITY = 25;
 
+    //TODO REDIS  //24jam=86400
+    private String FORMAT_KEY = "%IDORDER%-%TOKEN%";
+    private Integer REDIS_TOKEN_TTL = 86400;
+    private Integer RANDOM_CODE_LENGTH = 8;
+    private boolean NUMERIC_RANDOM = true;
+    private boolean CHAR_RANDOM = false;
+
+
 }
