@@ -16,6 +16,7 @@
 	
 	<properties>
 		<java.version>1.8</java.version>
+		<solace-java.version>4.2.2</solace-java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,6 +69,13 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.12</version>
+		</dependency>
+
+		<!-- Solace  -->
+		<dependency>
+			<groupId>com.solace.spring.boot</groupId>
+			<artifactId>solace-java-spring-boot-starter</artifactId>
+			<version>${solace-java.version}</version>
 		</dependency>
 	</dependencies>
 

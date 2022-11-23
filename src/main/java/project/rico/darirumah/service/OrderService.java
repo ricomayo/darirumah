@@ -24,12 +24,12 @@ public class OrderService {
         return orderRepository.placeOrder(orderRq.getIdUser(),orderRq.getProductCode(), orderRq.getQty(),orderRq.getDestinationName(),orderRq.getDestinationAddress());
     };
 
-    public String finishOrder(EndOrderRq finishOrderRq){
-        return orderRepository.finishOrder(finishOrderRq.getIdorder(),finishOrderRq.getIdUser(), finishOrderRq.getIdproduct());
+    public String finishOrder(EndOrderRq endOrderRq){
+        return orderRepository.finishOrder(endOrderRq.getIdorder(),endOrderRq.getIdUser(), endOrderRq.getIdproduct());
     };
 
-    public String cancelOrder(int idOrder,int idUser,int idProduct){
-        return orderRepository.cancelOrder(idOrder, idUser, idProduct);
+    public String cancelOrder(EndOrderRq endOrderRq){
+        return orderRepository.cancelOrder(endOrderRq.getIdorder(),endOrderRq.getIdUser(), endOrderRq.getIdproduct());
     };
 
 

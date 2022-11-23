@@ -20,5 +20,10 @@ public class AppProperties {
 
     public static String SCHEMA = "darirumah";
 
+    /*SOLACE SETTING*/
+    private String SOLACE_SMS_QUEUE_DESTINATION = "event-darirumah-paid";
+    private int ASYNC_CORE_POOL_SIZE = 25;
+    private int ASYNC_MAX_POOL_SIZE = 50;
+    private int ASYNC_QUEUE_CAPACITY = 25;
 
 }

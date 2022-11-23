@@ -1,11 +1,15 @@
 package project.rico.darirumah.util;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class StringTools {
+    public static final Gson gson = new GsonBuilder().create();
 
     /**
      * Tokenize and validate delimited string arrays is contain strTest

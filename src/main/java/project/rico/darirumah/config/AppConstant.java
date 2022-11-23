@@ -39,6 +39,9 @@ public class AppConstant {
         PRODUCT_EXIST
     }
 
-
+    public enum ORDER_PRODUCT {
+        SUCCESS,
+        PRODUCT_EXIST
+    }
 
 }

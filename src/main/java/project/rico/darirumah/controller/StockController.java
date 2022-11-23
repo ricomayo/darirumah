@@ -58,14 +58,14 @@ public class StockController {
                 responseInfo.getHttpStatus());
     }
 
-    @Operation(summary = "Delete Stock")
-    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@Operation(summary = "Delete Stock")
+    @DeleteMapping(value = "/deleteStock", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteStock() throws CommonException {
-        /* invoke use case */
+        *//* invoke use case *//*
         ResponseInfo responseInfo = stockUsecase.deleteStock();
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());
-    }
+    }*/
 
 }
