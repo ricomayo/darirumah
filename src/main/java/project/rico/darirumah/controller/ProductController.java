@@ -22,7 +22,7 @@ public class ProductController {
     ProductUsecase productUsecase;
 
     @Operation(summary = "Get List Product")
-    @GetMapping(value = "/getListProduct/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getListProduct", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getListProduct(@RequestHeader(value = "iduser", required = false) int idUser,
                                             @RequestParam(value = "productcode", required = false) String productCode,
                                             @RequestParam(value = "productname", required = false) String productName,

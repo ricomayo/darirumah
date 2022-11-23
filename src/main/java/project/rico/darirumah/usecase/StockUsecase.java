@@ -3,25 +3,20 @@ package project.rico.darirumah.usecase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import project.rico.darirumah.config.AppConstant;
 import project.rico.darirumah.exception.definition.CommonException;
 import project.rico.darirumah.model.ResponseInfo;
-import project.rico.darirumah.model.db.ProductRef;
 import project.rico.darirumah.model.db.StockRef;
-import project.rico.darirumah.model.db.UserRef;
-import project.rico.darirumah.model.request.ModifyProductRq;
 import project.rico.darirumah.model.response.GenericRs;
 import project.rico.darirumah.service.StockService;
 import project.rico.darirumah.service.UserService;
 import project.rico.darirumah.util.StringTools;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Component
 
-public class StockUsecase {
+public class StockUsecase extends BaseUsecase {
     @Autowired
     StockService stockService;
 
