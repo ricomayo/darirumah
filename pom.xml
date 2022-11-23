@@ -17,6 +17,8 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<solace-java.version>4.2.2</solace-java.version>
+		<spring-redis-version>2.2.5.RELEASE</spring-redis-version>
+		<jedis-version>3.2.0</jedis-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -76,6 +78,19 @@
 			<groupId>com.solace.spring.boot</groupId>
 			<artifactId>solace-java-spring-boot-starter</artifactId>
 			<version>${solace-java.version}</version>
+		</dependency>
+
+		<!-- Redis -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${spring-redis-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis-version}</version>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 

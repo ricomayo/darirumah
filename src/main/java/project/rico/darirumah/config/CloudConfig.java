@@ -7,6 +7,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import project.rico.darirumah.config.redis.RedisProperties;
 
 import javax.sql.DataSource;
 
@@ -14,6 +15,9 @@ import javax.sql.DataSource;
 public class CloudConfig {
     @Autowired
 	private AppProperties appProperties;
+
+	@Autowired
+	private RedisProperties redisProperties;
 
 	@Bean(name = AppConstant.BEAN_APP_CONFIG)
 	public AppProperties loadAppConfig(){
@@ -31,6 +35,10 @@ public class CloudConfig {
 		return new JdbcTemplate(dataSource);
 	}
 
+	@Bean(name = AppConstant.REDIS_CONFIG_NAME)
+	public RedisProperties loadRedisConfig() {
+		return redisProperties;
+	}
 
 
 }
