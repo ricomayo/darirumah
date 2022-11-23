@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class LoginRq {
 
     @NotNull(message = "userName is Mandatory")
-    @JsonProperty("userName")
+    @JsonProperty("username")
     private String userName;
 
     @NotNull(message = "password is Mandatory")

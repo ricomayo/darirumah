@@ -15,10 +15,10 @@ import javax.validation.constraints.NotNull;
 @Accessors(chain = true)
 public class UpdateUserRq {
     @NotNull(message = "password is Mandatory")
-    @JsonProperty("oldPassword")
+    @JsonProperty("oldpassword")
     private String oldPassword;
 
-    @JsonProperty("newPassword")
+    @JsonProperty("newpassword")
     private String newPassword;
 
     @JsonProperty("name")
