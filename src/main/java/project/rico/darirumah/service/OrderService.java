@@ -28,8 +28,8 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-    @Autowired
-    RedisRepository redisRepository;
+//    @Autowired
+//    RedisRepository redisRepository;
 
     public String placeOrder(OrderRq orderRq){
         return orderRepository.placeOrder(orderRq.getIdUser(),orderRq.getProductCode(), orderRq.getQty(),orderRq.getDestinationName(),orderRq.getDestinationAddress());
@@ -45,8 +45,9 @@ public class OrderService {
 
 
     public String getRedisKey(int idUser, int idOrder, String productCode ) {
-        Checkpoint checkpoint;
-        String token;
+        String token="";
+
+    /*    Checkpoint checkpoint;
 
         String uniqueCode;
         do {
@@ -55,7 +56,6 @@ public class OrderService {
                     appProperties.isCHAR_RANDOM(),
                     appProperties.isNUMERIC_RANDOM());
             token = appProperties.getFORMAT_KEY().replace("%IDORDER%", String.valueOf(idOrder)).replace("%KEY%", uniqueCode);
-            /*TODO CHECK KEY ON REDIS */
             log.info("[REDIS][{}:{}]", "CHECK TOKEN IN REDIS", token);
             checkpoint = redisRepository.findKey(token);
         } while (checkpoint != null);
@@ -74,11 +74,11 @@ public class OrderService {
         redisRepository.saveKey(checkpoint);
 
         log.info("[REDIS][{}:{}]", "SUCCESS SAVE TOKEN IN REDIS", StringTools.gson.toJson(checkpoint));
-
-        return uniqueCode;
+*/
+        return token;
     }
 
     public void deleteRedisKey(String token){
-        redisRepository.deleteKey(token);
+//        redisRepository.deleteKey(token);
     }
 }

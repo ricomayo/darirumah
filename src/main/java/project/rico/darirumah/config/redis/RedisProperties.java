@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties("redis")
+//@ConfigurationProperties("redis")
 public class RedisProperties {
 
     private String REDIS_HOST = "localhost";

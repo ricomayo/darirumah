@@ -35,11 +35,23 @@ public class OrderController {
 
     @Operation(summary = "Cancel Product")
     @PostMapping(value = "/cancel", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> cancelOrder(@RequestBody @Valid EndOrderRq orderRq) throws CommonException {
+    public ResponseEntity<?> cancelOrder(@RequestBody @Valid EndOrderRq endOrderRq) throws CommonException {
         /* invoke use case */
-        ResponseInfo responseInfo = orderUsecase.cancelOrder(orderRq);
+        ResponseInfo responseInfo = orderUsecase.cancelOrder(endOrderRq);
         return new ResponseEntity<>(responseInfo.getBody(),
                 responseInfo.getHttpHeaders(),
                 responseInfo.getHttpStatus());
     }
+
+    @Operation(summary = "Finish Product")
+    @PostMapping(value = "/finish", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> finishOrder(@RequestBody @Valid EndOrderRq endOrderRq) throws CommonException {
+        /* invoke use case */
+        ResponseInfo responseInfo = orderUsecase.finishOrder(endOrderRq);
+        return new ResponseEntity<>(responseInfo.getBody(),
+                responseInfo.getHttpHeaders(),
+                responseInfo.getHttpStatus());
+    }
+
+
 }
