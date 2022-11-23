@@ -11,3 +11,6 @@ CRUD Method
 Intermediate SQL Query
 Business Standart Response Message
 
+Incoming Tech to be Applied:
+Solace Client
+Redis 
