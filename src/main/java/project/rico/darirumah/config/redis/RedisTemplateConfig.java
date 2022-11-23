@@ -18,8 +18,6 @@ import project.rico.darirumah.model.Checkpoint;
 @Configuration
 public class RedisTemplateConfig {
 
-
-
     @Bean(AppConstant.REDIS_TEMPLATE_NAME)
     public RedisTemplate<String, Checkpoint> redisTemplate(@Qualifier(AppConstant.REDIS_CLIENT_NAME) RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Checkpoint> template = new RedisTemplate();
