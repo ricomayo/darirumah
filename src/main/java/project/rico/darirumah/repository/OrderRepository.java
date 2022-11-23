@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import project.rico.darirumah.config.AppConstant;
 import project.rico.darirumah.config.AppProperties;
-import project.rico.darirumah.util.QueryTools;
 
 import java.util.ArrayList;
 import java.util.List;

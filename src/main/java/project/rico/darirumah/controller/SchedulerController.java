@@ -19,6 +19,7 @@ import project.rico.darirumah.usecase.StockUsecase;
 public class SchedulerController {
     @Autowired
     StockUsecase stockUsecase;
+
     @Operation(summary = "Delete Stock")
     @DeleteMapping(value = "/deleteStock", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteStock() throws CommonException {
