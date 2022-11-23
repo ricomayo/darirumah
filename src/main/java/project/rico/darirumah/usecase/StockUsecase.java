@@ -65,7 +65,7 @@ public class StockUsecase extends BaseUsecase {
                 if (i > 0) {
                     response.append("Stock has been Updated.");
                 } else {
-                    throw new CommonException("Product Not Found");
+                    throw new CommonException("Product Not Found in Stock.");
                 }
             } else {
                 throw new CommonException("You are not Authorized!!");
@@ -102,7 +102,7 @@ public class StockUsecase extends BaseUsecase {
             if (listStockRef != null && listStockRef.size() > 0) {
                 responseInfo.setSuccess(listStockRef);
             } else {
-                throw new CommonException("No Product Found.");
+                throw new CommonException("No Product Found in Stock.");
             }
 
         } catch (Exception e) {

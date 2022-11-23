@@ -16,6 +16,5 @@ public class StockRef {
     String idProduct;
     String productCode;
     String qtyFree;
-    String qtyBook;
     String uom;
 }

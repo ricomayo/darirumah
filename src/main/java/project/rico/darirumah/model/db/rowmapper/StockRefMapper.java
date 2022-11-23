@@ -15,7 +15,6 @@ public class StockRefMapper implements RowMapper<StockRef> {
         data.setIdProduct(rs.getString("id_product"));
         data.setProductCode(rs.getString("productcode"));
         data.setQtyFree(rs.getString("qty_free"));
-        data.setQtyBook(rs.getString("qty_booked"));
         data.setUom(rs.getString("uom"));
         return data;
     }

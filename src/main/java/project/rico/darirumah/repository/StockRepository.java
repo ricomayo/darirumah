@@ -30,7 +30,7 @@ public class StockRepository {
     String TABLE_STOCK = "stock";
     String TABLE_USER = "mst_user";
 
-    private final String QUERY_SELECT = "SELECT id_stock,id_product,productcode, qty, uom  FROM ";
+    private final String QUERY_SELECT = "SELECT id_stock,id_product,productcode, qty_free, uom  FROM ";
 
     public List<StockRef> getStock(String productCode, String productName, String type) {
 
@@ -54,7 +54,7 @@ public class StockRepository {
         List<Object> parameter = new ArrayList<>();
         String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_insertstock(?,?,?)";
 
-        parameter.add(idUser);
+        parameter.add(String.valueOf(idUser));
         parameter.add(productCode);
         parameter.add(String.valueOf(qty));
 
