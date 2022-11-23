@@ -54,7 +54,7 @@ public class OrderRepository {
 
     public String cancelOrder(int idOrder,int idUser,int idProduct){
         List<Object> parameter = new ArrayList<>();
-        String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_finishorder(?,?,? )";
+        String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_cancelorder(?,?,? )";
 
         parameter.add(idOrder);
         parameter.add(idUser);

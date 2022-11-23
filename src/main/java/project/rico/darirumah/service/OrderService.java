@@ -78,4 +78,7 @@ public class OrderService {
         return uniqueCode;
     }
 
+    public void deleteRedisKey(String token){
+        redisRepository.deleteKey(token);
+    }
 }
