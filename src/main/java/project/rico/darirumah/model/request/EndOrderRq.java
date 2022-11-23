@@ -26,4 +26,10 @@ public class EndOrderRq {
     @NotNull(message = "idProduct is Mandatory")
     @JsonProperty("idproduct")
     private int idproduct;
+
+    @NotNull(message = "token is Mandatory")
+    @JsonProperty("token")
+    private String token;
+
+
 }

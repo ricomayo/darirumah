@@ -39,18 +39,20 @@ public class OrderUsecase extends BaseUsecase{
        return responseInfo;
    }
 
-    public ResponseInfo finishOrder(EndOrderRq finishOrderRq){
+    public ResponseInfo finishOrder(EndOrderRq endOrderRq){
 
         GenericRs body = new GenericRs();
         ResponseInfo responseInfo = new ResponseInfo().setBody(body);
         String response = "";
 
         try {
-            response = orderService.finishOrder(finishOrderRq);
+            response = orderService.finishOrder(endOrderRq);
 
             if(!StringTools.equals(response, AppConstant.ORDER_PRODUCT.SUCCESS.toString())){
                 throw new CommonException(response);
             }
+
+            orderService.deleteRedisKey(endOrderRq.getToken());
             responseInfo.setSuccess(response);
         } catch (Exception e) {
             responseInfo.setException(e);

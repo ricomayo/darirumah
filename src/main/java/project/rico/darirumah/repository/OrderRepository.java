@@ -24,8 +24,6 @@ public class OrderRepository {
     @Qualifier(AppConstant.BEAN_APP_CONFIG)
     private AppProperties appProperties;
 
-    String TABLE_ORDER = "order";
-
     public String placeOrder(int idUser, String productCode, int qty, String destName, String destAddress) {
         List<Object> parameter = new ArrayList<>();
         String sql = "SELECT * FROM " + AppProperties.SCHEMA + ".f_placeorder(?,?,?,?,? )";
