@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 public class CloudConfig {
     @Autowired
 	private AppProperties appProperties;
-
 	@Autowired
 	private RedisProperties redisProperties;
 
@@ -34,6 +33,8 @@ public class CloudConfig {
 	public JdbcTemplate jdbcTemplateConf(@Qualifier(AppConstant.BEAN_DS_MASTERDATA_POSTGRES) DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
+
+
 
 	@Bean(name = AppConstant.REDIS_CONFIG_NAME)
 	public RedisProperties loadRedisConfig() {

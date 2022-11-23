@@ -1,7 +1,9 @@
 package project.rico.darirumah.config.redis;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -15,6 +17,9 @@ import project.rico.darirumah.model.Checkpoint;
 @Slf4j
 @Configuration
 public class RedisTemplateConfig {
+
+
+
     @Bean(AppConstant.REDIS_TEMPLATE_NAME)
     public RedisTemplate<String, Checkpoint> redisTemplate(@Qualifier(AppConstant.REDIS_CLIENT_NAME) RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Checkpoint> template = new RedisTemplate();
